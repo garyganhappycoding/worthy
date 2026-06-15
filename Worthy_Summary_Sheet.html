@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worthy — One Page Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0F1A14;
+    color: #F5F0E8;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #0F1A14;
+    padding: 48px;
+    position: relative;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #2A3D2E;
+  }
+  .logo-block {}
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #F5F0E8;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .logo span { color: #C9A84C; }
+  .tagline {
+    font-size: 14px;
+    color: #7A8C7E;
+    margin-top: 6px;
+    font-style: italic;
+    letter-spacing: 0.3px;
+  }
+  .header-meta {
+    text-align: right;
+    font-size: 12px;
+    color: #7A8C7E;
+    line-height: 1.8;
+  }
+  .header-meta strong {
+    color: #C9A84C;
+    font-weight: 600;
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 2px;
+  }
+
+  /* PROBLEM + IDEA */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .block {
+    background: #162018;
+    border: 1px solid #2A3D2E;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .block-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #C9A84C;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .block p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #A0B4A4;
+  }
+
+  .block p strong {
+    color: #F5F0E8;
+    font-weight: 600;
+  }
+
+  /* HOW IT WORKS */
+  .engines {
+    margin-bottom: 24px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #C9A84C;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .engine-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .engine-card {
+    background: #162018;
+    border: 1px solid #2A3D2E;
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .engine-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2A3D2E;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .engine-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #F5F0E8;
+    margin-bottom: 6px;
+  }
+
+  .engine-desc {
+    font-size: 12px;
+    color: #7A8C7E;
+    line-height: 1.55;
+  }
+
+  /* MODULE MAP */
+  .module-section {
+    margin-bottom: 24px;
+  }
+
+  .module-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .module-table th {
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #7A8C7E;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-bottom: 1px solid #2A3D2E;
+    background: #162018;
+  }
+
+  .module-table th:first-child { border-radius: 8px 0 0 0; }
+  .module-table th:last-child { border-radius: 0 8px 0 0; }
+
+  .module-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #1C2B20;
+    vertical-align: top;
+    color: #A0B4A4;
+    background: #0F1A14;
+  }
+
+  .module-table td:first-child {
+    color: #F5F0E8;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .module-table td .gold { color: #C9A84C; font-weight: 600; }
+
+  /* DIFFERENTIATORS */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .diff-card {
+    background: #162018;
+    border: 1px solid #2A3D2E;
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .diff-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #C9A84C;
+    margin-bottom: 6px;
+  }
+
+  .diff-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #F5F0E8;
+    margin-bottom: 6px;
+  }
+
+  .diff-desc {
+    font-size: 12px;
+    color: #7A8C7E;
+    line-height: 1.55;
+  }
+
+  /* JUDGING */
+  .judging-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .judging-card {
+    background: #162018;
+    border: 1px solid #2A3D2E;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .judging-score {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #C9A84C;
+    margin-bottom: 4px;
+  }
+
+  .judging-label {
+    font-size: 10px;
+    color: #7A8C7E;
+    line-height: 1.4;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid #2A3D2E;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    color: #7A8C7E;
+    line-height: 1.7;
+  }
+
+  .footer-left strong { color: #F5F0E8; }
+
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .tech-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid #2A3D2E;
+    font-size: 11px;
+    color: #7A8C7E;
+    background: #162018;
+  }
+
+  .qr-placeholder {
+    width: 72px;
+    height: 72px;
+    background: #162018;
+    border: 1px solid #2A3D2E;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #2A3D2E;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: #0F1A14; padding: 0; }
+    .page { width: 100%; min-height: auto; padding: 32px; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* PROOF STRIP */
+  .proof-strip {
+    border-left: 3px solid #C9A84C;
+    padding: 8px 12px;
+    background: #C9A84C10;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #A0B4A4;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .headline-stat {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #C9A84C;
+    line-height: 1;
+  }
+
+  .headline-sub {
+    font-size: 11px;
+    color: #7A8C7E;
+    margin-top: 3px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 24px;
+    padding: 20px;
+    background: #162018;
+    border: 1px solid #2A3D2E;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-block">
+      <div class="logo">Worth<span>y</span></div>
+      <div class="tagline">Your worth, made visible.</div>
+    </div>
+    <div class="header-meta">
+      <strong>Hackathon</strong>
+      Talentbank Career OS Challenge
+      <strong style="margin-top:8px;">Submission</strong>
+      June 15, 2026
+      <strong style="margin-top:8px;">Category</strong>
+      Living Portfolio + Career OS Core
+    </div>
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="stats-row">
+    <div>
+      <div class="headline-stat">7</div>
+      <div class="headline-sub">Screens built</div>
+    </div>
+    <div>
+      <div class="headline-stat">4</div>
+      <div class="headline-sub">AI modes</div>
+    </div>
+    <div>
+      <div class="headline-stat">6</div>
+      <div class="headline-sub">Modules covered</div>
+    </div>
+    <div>
+      <div class="headline-stat">1</div>
+      <div class="headline-sub">Shared data model</div>
+    </div>
+    <div style="flex:1;">
+      <div class="proof-strip">Every skill is traceable to a real post and a verbatim evidence quote. No black box, no self-reported claims.</div>
+    </div>
+  </div>
+
+  <!-- PROBLEM + IDEA -->
+  <div class="two-col" style="margin-bottom:24px;">
+    <div class="block">
+      <div class="block-label">The Problem</div>
+      <p>Fresh graduates have <strong>years of real skills</strong> built through projects, events, and competitions — but no honest way to surface them. CVs are written from memory. Employers can't verify claims. Real talent stays invisible.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">The Solution</div>
+      <p>Worthy is a <strong>living portfolio platform</strong> where every post a candidate makes is read by an AI engine that extracts skills, links them to evidence, and updates the portfolio automatically. No CV. Just proof.</p>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="engines">
+    <div class="section-label">How It Works — Three Engines</div>
+    <div class="engine-grid">
+      <div class="engine-card">
+        <div class="engine-num">01</div>
+        <div class="engine-title">Extract & Question</div>
+        <div class="engine-desc">Candidate posts a real experience. AI extracts skills, evidence quotes, evidence strength, trending tags, and an employer quick-scan — all in one pipeline call. Live clarifying questions appear as they type.</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">02</div>
+        <div class="engine-title">Position & Connect</div>
+        <div class="engine-desc">Ask Worthy analyses the full portfolio against market trends and returns a positioning summary, 2–3 realistic career pathways, and matched mentor suggestions with connection requests.</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-num">03</div>
+        <div class="engine-title">Trend Digest</div>
+        <div class="engine-desc">A periodic digest showing which skills are rising, stable, or declining in the job market. Keeps the platform useful between job searches and feeds a future university curriculum engine.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULE COVERAGE -->
+  <div class="module-section">
+    <div class="section-label">Module Coverage Map</div>
+    <table class="module-table">
+      <thead>
+        <tr>
+          <th>Career OS Module</th>
+          <th>Worthy Feature</th>
+          <th>Screen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Career OS Core</td>
+          <td>Sign-up, onboarding (3-part AI questionnaire), dashboards, role toggle</td>
+          <td><span class="gold">Onboarding</span></td>
+        </tr>
+        <tr>
+          <td>Living Portfolio</td>
+          <td>Feed posting → AI extraction → auto-updated portfolio with skills, evidence, trajectory</td>
+          <td><span class="gold">Feed + Portfolio</span></td>
+        </tr>
+        <tr>
+          <td>Career Path Navigator</td>
+          <td>Ask Worthy — 2–3 realistic next-step pathways tied to evidenced skills and market trends</td>
+          <td><span class="gold">Ask Worthy</span></td>
+        </tr>
+        <tr>
+          <td>AI Career Coach</td>
+          <td>Ask Worthy — positioning summary + mentor matching + connection request</td>
+          <td><span class="gold">Ask Worthy</span></td>
+        </tr>
+        <tr>
+          <td>Smart Talent Matching</td>
+          <td>Employer scouting — skill/evidence/trending filters, quick-scan cards, full profile modal</td>
+          <td><span class="gold">Employer Dashboard</span></td>
+        </tr>
+        <tr>
+          <td>Trend Digest</td>
+          <td>Trend digest screen — rising/stable/declining indicators with market relevance notes</td>
+          <td><span class="gold">Trend Digest</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DIFFERENTIATORS -->
+  <div class="section-label">Three Things No Other Platform Does Together</div>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-num">01</div>
+      <div class="diff-title">Continuous, not one-time</div>
+      <div class="diff-desc">Portfolio updates every time a candidate posts — not only when they apply for a job.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">02</div>
+      <div class="diff-title">Evidence-first, not claim-first</div>
+      <div class="diff-desc">Every skill is anchored to a verbatim post excerpt. Employers verify in one click.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">03</div>
+      <div class="diff-title">Employer quick-scan built in</div>
+      <div class="diff-desc">AI produces a structured 3-field employer summary automatically on every post.</div>
+    </div>
+  </div>
+
+  <!-- JUDGING CRITERIA -->
+  <div class="section-label" style="margin-top:4px;">Judging Criteria Coverage</div>
+  <div class="judging-grid">
+    <div class="judging-card">
+      <div class="judging-score">30%</div>
+      <div class="judging-label">Product & UX Thinking</div>
+    </div>
+    <div class="judging-card">
+      <div class="judging-score">25%</div>
+      <div class="judging-label">System Design & Integration</div>
+    </div>
+    <div class="judging-card">
+      <div class="judging-score">20%</div>
+      <div class="judging-label">Completeness</div>
+    </div>
+    <div class="judging-card">
+      <div class="judging-score">15%</div>
+      <div class="judging-label">AI Craft</div>
+    </div>
+    <div class="judging-card">
+      <div class="judging-score">10%</div>
+      <div class="judging-label">Code Quality</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      <strong>Built with</strong>
+      <div class="badge-row">
+        <span class="tech-badge">HTML / CSS / JS</span>
+        <span class="tech-badge">Claude API (claude-sonnet-4-6)</span>
+        <span class="tech-badge">In-memory state (prototype)</span>
+        <span class="tech-badge">Supabase (production roadmap)</span>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:#4A5F52;">
+        Full concept brief, build specification, and live prototype available in submission package.
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div class="qr-placeholder">
+        Live<br>Demo<br>↗
+      </div>
+      <div style="font-size:10px;color:#4A5F52;margin-top:6px;">Replace with<br>QR to hosted URL</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
