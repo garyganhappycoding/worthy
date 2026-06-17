@@ -2247,18 +2247,19 @@ function renderUserProfile(id) {
     <div class="card" style="margin-bottom:16px;">
       <div class="section-title">⚡ Live Portfolio Summary</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;">
-        <div>
-          <div class="qs-mini-label">What they can do</div>
-          <div class="qs-mini-val">${quickScan?.what_they_can_do || '—'}</div>
-        </div>
-        <div>
-          <div class="qs-mini-label">Strongest proof</div>
-          <div class="qs-mini-val">${quickScan?.strongest_proof || '—'}</div>
-        </div>
-        <div>
-          <div class="qs-mini-label">Fit energy</div>
-          <div class="qs-mini-val">${quickScan?.fit_energy || '—'}</div>
-        </div>
+        ${[
+          { label: 'What they can do', val: quickScan?.what_they_can_do },
+          { label: 'Strongest proof', val: quickScan?.strongest_proof },
+          { label: 'Fit energy', val: quickScan?.fit_energy }
+        ].map(item => {
+          const points = (item.val || '').split(/[;,]/).map(p => p.trim()).filter(Boolean);
+          return `<div>
+            <div class="qs-mini-label">${item.label}</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px;">
+              ${points.length ? points.map(pt => `<li style="font-size:13px;color:var(--text2);line-height:1.5;display:flex;gap:6px;align-items:flex-start;"><span style="color:var(--teal);flex-shrink:0;margin-top:2px;">•</span><span>${pt}</span></li>`).join('') : '<li style="font-size:13px;color:var(--text2);">—</li>'}
+            </ul>
+          </div>`;
+        }).join('')}
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border);">
         ${skillBadgesHTML}
