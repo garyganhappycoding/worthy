@@ -7,18 +7,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0F1A14;
+    --navy: #111111;
     --teal: #C9A84C;
     --teal-dim: #C9A84C15;
     --teal-border: #C9A84C35;
-    --white: #F5F0E8;
-    --slate: #7A8C7E;
-    --surface: #141F18;
-    --surface2: #1C2B20;
-    --card: #162018;
-    --border: #2A3D2E;
-    --text: #F5F0E8;
-    --text2: #A0B4A4;
+    --white: #FFFFFF;
+    --slate: #8A8A8A;
+    --surface: #0E0E0E;
+    --surface2: #1E1E1E;
+    --card: #181818;
+    --border: #2E2E2E;
+    --text: #F0F0F0;
+    --text2: #ABABAB;
     --red: #E05555;
     --yellow: #C9A84C;
     --green: #5A9E6F;
@@ -132,7 +132,7 @@
     text-decoration: none;
   }
   .nav-item:hover { color: var(--white); background: rgba(255,255,255,0.05); }
-  .nav-item.active { color: var(--teal); border-left-color: var(--teal); background: rgba(0,201,177,0.08); }
+  .nav-item.active { color: var(--teal); border-left-color: var(--teal); background: var(--teal-dim); }
   .nav-icon { font-size: 16px; width: 20px; text-align: center; }
 
   .main-content {
@@ -173,7 +173,7 @@
     font-family: 'Inter', sans-serif;
     transition: all 0.2s;
   }
-  .btn-primary { background: var(--teal); color: #0F1A14; }
+  .btn-primary { background: var(--teal); color: #111111; }
   .btn-primary:hover { background: #B8943E; }
   .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
   .btn-secondary:hover { background: #243028; }
@@ -484,7 +484,7 @@
 
   /* ── ASK WORTHY ── */
   .ask-worthy-hero {
-    background: linear-gradient(135deg, #0F1A14 0%, #1A2E1C 100%);
+    background: linear-gradient(135deg, #111111 0%, #1E1A12 100%);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 32px;
@@ -507,19 +507,29 @@
   .pathway-rationale { font-size: 13px; color: var(--text2); line-height: 1.6; }
 
   .mentor-card {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    padding: 16px;
     margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .mentor-card-header {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px;
+    cursor: pointer;
   }
   .mentor-info { flex: 1; }
   .mentor-name { font-weight: 700; font-size: 14px; }
   .mentor-role { font-size: 13px; color: var(--slate); margin-bottom: 6px; }
   .mentor-reason { font-size: 13px; color: var(--text2); }
+  .mentor-card-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .mentor-card-body.open { display: block; }
 
   /* ── TRENDS ── */
   .trend-item {
@@ -576,7 +586,7 @@
     cursor: pointer;
     transition: all 0.2s;
   }
-  .candidate-card:hover { border-color: var(--teal); box-shadow: 0 4px 16px rgba(0,201,177,0.1); }
+  .candidate-card:hover { border-color: var(--teal); box-shadow: 0 4px 16px rgba(201,168,76,0.12); }
   .candidate-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
   .candidate-card-meta { flex: 1; }
   .candidate-name { font-weight: 700; font-size: 16px; }
@@ -592,6 +602,59 @@
   .qs-mini-item { font-size: 12px; }
   .qs-mini-label { color: var(--teal); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
   .qs-mini-val { color: var(--text2); line-height: 1.4; }
+
+  /* ── PROFILE PAGE ── */
+  .profile-header {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .profile-avatar {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 32px;
+    color: #111111;
+    font-family: 'Space Grotesk', sans-serif;
+    flex-shrink: 0;
+  }
+  .profile-meta { flex: 1; }
+  .profile-name-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+  .profile-name-row h2 { font-size: 22px; }
+  .profile-stats { display: flex; gap: 24px; margin-bottom: 12px; }
+  .profile-stat { font-size: 13px; color: var(--text2); }
+  .profile-stat b { color: var(--white); font-size: 14px; }
+  .profile-edu { font-size: 13px; color: var(--slate); margin-bottom: 8px; }
+  .profile-bio { font-size: 14px; color: var(--text2); line-height: 1.6; }
+  .profile-actions { display: flex; gap: 10px; margin-top: 14px; }
+  .btn-follow { background: var(--teal); color: #111111; }
+  .btn-following { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .posts-grid .grid-post {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    position: relative;
+  }
+  .posts-grid .grid-post img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .posts-grid .grid-post-text {
+    width: 100%; height: 100%;
+    background: var(--card);
+    padding: 10px;
+    font-size: 11px;
+    color: var(--text2);
+    line-height: 1.4;
+    overflow: hidden;
+  }
 
   /* ── MESSAGES ── */
   .msg-layout { display: flex; gap: 0; height: calc(100vh - 140px); }
@@ -651,7 +714,7 @@
   .loading-overlay.show { display: flex; }
   .big-spinner {
     width: 48px; height: 48px;
-    border: 3px solid rgba(0,201,177,0.3);
+    border: 3px solid rgba(201,168,76,0.3);
     border-top-color: var(--teal);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
@@ -691,7 +754,7 @@
   .section-title {
     font-size: 16px;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--white);
     margin-bottom: 14px;
     display: flex;
     align-items: center;
@@ -830,6 +893,10 @@
             <input type="text" id="ob_uni" placeholder="e.g. Universiti Malaya" value="UTAR">
           </div>
           <div class="form-group">
+            <label>GPA</label>
+            <input type="text" id="ob_gpa" placeholder="e.g. 3.71" value="3.71">
+          </div>
+          <div class="form-group">
             <label>Location</label>
             <input type="text" id="ob_location" placeholder="e.g. Kuala Lumpur, Malaysia" value="Kuala Lumpur, Malaysia">
           </div>
@@ -890,6 +957,11 @@
         <p>Share what you've done. Every post builds your portfolio.</p>
       </div>
 
+      <div class="tabs" id="feedTabs" style="margin-bottom:20px;">
+        <div class="tab active" onclick="switchFeedTab('all', this)">For You</div>
+        <div class="tab" onclick="switchFeedTab('mine', this)">My Posts</div>
+      </div>
+
       <!-- Composer -->
       <div class="post-composer">
         <div class="flex gap-12 items-center" style="margin-bottom:12px;">
@@ -925,6 +997,24 @@
 
       <!-- Feed posts -->
       <div id="feedPosts"></div>
+    </div>
+
+    <!-- SCREEN: SEARCH -->
+    <div class="screen" id="screen-search">
+      <div class="page-header">
+        <h2>Search</h2>
+        <p>Find people by name or skill.</p>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="userSearch" placeholder="Search by name or skill, e.g. Priya, event management..." oninput="filterUsers()">
+        <button class="btn btn-secondary btn-sm" onclick="filterUsers()">Search</button>
+      </div>
+      <div id="userSearchResults"></div>
+    </div>
+
+    <!-- SCREEN: PROFILE -->
+    <div class="screen" id="screen-profile">
+      <!-- filled dynamically by renderUserProfile -->
     </div>
 
     <!-- SCREEN: PORTFOLIO -->
@@ -997,6 +1087,13 @@ const state = {
   onboardStep: 0,
   onboardData: {},
   posts: [],
+  following: [],
+  followerCounts: { 'Alex Tan': 12, 'Priya Nair': 34, 'Daniel Lim': 21 },
+  otherPosts: [
+    { id: 9001, author: 'Priya Nair', time: '2 days ago', content: 'Just shipped a small Chrome extension that auto-summarises long Slack threads using the Claude API. First real side project I built end-to-end alone.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=220&fit=crop', likes: 14, liked: false, comments: [ { author: 'Daniel Lim', text: 'This is so useful, can I try it?' } ] },
+    { id: 9002, author: 'Daniel Lim', time: '4 days ago', content: 'Wrapped up vendor negotiations for our faculty dinner — got our printing costs down 30% by bundling orders with two other clubs. Small win but felt great.', image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400&h=220&fit=crop', likes: 8, liked: false, comments: [] },
+    { id: 9003, author: 'Priya Nair', time: '1 week ago', content: 'Mentored 3 juniors through their first hackathon this weekend. Realised I actually enjoy the teaching side as much as the building side.', image: null, likes: 21, liked: false, comments: [ { author: 'Alex Tan', text: 'That\'s amazing, mentorship is so underrated!' } ] },
+  ],
   portfolio: {
     headline: "A communication-driven fresh graduate who documents experiences honestly and turns self-reflection into deliberate skill-building.",
     quickScan: {
@@ -1033,7 +1130,7 @@ const state = {
   ],
   candidates: [
     {
-      id: 1, name: 'Alex Tan', field: 'Communication & Media', uni: 'UTAR',
+      id: 1, name: 'Alex Tan', field: 'Communication & Media', uni: 'UTAR', gpa: '3.71', gradYear: '2025', status: 'Fresh Graduate',
       socialLinks: { instagram: 'https://instagram.com/alextan.creates', linkedin: 'https://linkedin.com/in/alextan' },
       headline: 'A communication-driven fresh graduate who documents experiences honestly and turns self-reflection into deliberate skill-building.',
       quickScan: {
@@ -1048,7 +1145,7 @@ const state = {
       ]
     },
     {
-      id: 2, name: 'Priya Nair', field: 'Computer Science', uni: 'UTM',
+      id: 2, name: 'Priya Nair', field: 'Computer Science', uni: 'UTM', gpa: '3.85', gradYear: '2025', status: 'Fresh Graduate',
       socialLinks: { instagram: 'https://instagram.com/priya.builds', linkedin: 'https://linkedin.com/in/priyanair' },
       headline: 'A self-taught developer with proven project delivery and a strong track record in hackathon environments.',
       quickScan: {
@@ -1063,7 +1160,7 @@ const state = {
       ]
     },
     {
-      id: 3, name: 'Daniel Lim', field: 'Business Administration', uni: 'Sunway University',
+      id: 3, name: 'Daniel Lim', field: 'Business Administration', uni: 'Sunway University', gpa: '3.62', gradYear: '2024', status: 'Fresh Graduate',
       socialLinks: { instagram: 'https://instagram.com/daniellim.official', linkedin: 'https://linkedin.com/in/daniellim' },
       headline: 'An operations-oriented business graduate with hands-on experience running large-scale campus events and cross-functional teams.',
       quickScan: {
@@ -1079,9 +1176,9 @@ const state = {
     }
   ],
   mentors: [
-    { id: 1, name: 'Sarah Loh', role: 'Head of Content, Astro', tags: ['content creation', 'media production', 'social media'], bio: 'Led digital content transformation at two major Malaysian broadcasters.' },
-    { id: 2, name: 'Fariz Malik', role: 'Founder, CreatorOS MY', tags: ['communication', 'personal branding', 'creator economy'], bio: 'Built a creator community of 40k+ members from scratch starting at 22.' },
-    { id: 3, name: 'Lin Wei', role: 'Talent Lead, TNG Digital', tags: ['hr', 'talent', 'communication', 'fintech'], bio: 'Screens 200+ candidates monthly and mentors early-career professionals.' },
+    { id: 1, name: 'Sarah Loh', role: 'Head of Content, Astro', tags: ['content creation', 'media production', 'social media'], bio: 'Led digital content transformation at two major Malaysian broadcasters.', field: 'Mass Communication', uni: 'Universiti Malaya', gpa: '3.65', gradYear: '2014' },
+    { id: 2, name: 'Fariz Malik', role: 'Founder, CreatorOS MY', tags: ['communication', 'personal branding', 'creator economy'], bio: 'Built a creator community of 40k+ members from scratch starting at 22.', field: 'Marketing', uni: 'Taylor\'s University', gpa: '3.40', gradYear: '2017' },
+    { id: 3, name: 'Lin Wei', role: 'Talent Lead, TNG Digital', tags: ['hr', 'talent', 'communication', 'fintech'], bio: 'Screens 200+ candidates monthly and mentors early-career professionals.', field: 'Human Resource Management', uni: 'Sunway University', gpa: '3.55', gradYear: '2016' },
   ],
   messages: {
     threads: [
@@ -1166,6 +1263,8 @@ function buildSidebar() {
   const candidateNav = [
     { id: 'onboard', icon: '🎯', label: 'Onboarding' },
     { id: 'feed', icon: '📋', label: 'Feed' },
+    { id: 'search', icon: '🔎', label: 'Search' },
+    { id: 'profile', icon: '👤', label: 'My Profile' },
     { id: 'portfolio', icon: '⭐', label: 'My Portfolio' },
     { id: 'askworthy', icon: '✦', label: 'Ask Worthy' },
     { id: 'trends', icon: '📈', label: 'Trend Digest' },
@@ -1196,6 +1295,8 @@ function navigateTo(screen) {
   if (screen === 'trends') renderTrends();
   if (screen === 'employer') renderEmployer();
   if (screen === 'messages') renderMessages();
+  if (screen === 'search') renderUserSearch();
+  if (screen === 'profile') renderUserProfile(null);
   if (screen === 'askworthy') document.getElementById('askWorthyResult').innerHTML = '';
 }
 
@@ -1215,6 +1316,7 @@ async function generateOnboardQuestions() {
   const personalInfo = {
     field: document.getElementById('ob_field').value,
     university: document.getElementById('ob_uni').value,
+    gpa: document.getElementById('ob_gpa').value,
     location: document.getElementById('ob_location').value,
     status: document.getElementById('ob_status').value
   };
@@ -1275,9 +1377,22 @@ function completeOnboarding() {
 // ═══════════════════════════════════════════
 // FEED
 // ═══════════════════════════════════════════
+let activeFeedTab = 'all';
+
+function switchFeedTab(tab, el) {
+  activeFeedTab = tab;
+  document.querySelectorAll('#feedTabs .tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderFeed();
+}
+
 function renderFeed() {
   const container = document.getElementById('feedPosts');
-  if (state.posts.length === 0) {
+  const myPosts = state.posts.map(p => ({ ...p, author: state.currentUser.name, isMine: true }));
+  const others = state.otherPosts.map(p => ({ ...p, isMine: false }));
+  const combined = activeFeedTab === 'mine' ? myPosts : [...myPosts, ...others];
+
+  if (combined.length === 0) {
     container.innerHTML = `<div class="card" style="text-align:center;padding:40px;color:var(--slate);">
       <div style="font-size:40px;margin-bottom:12px;">📝</div>
       <div style="font-size:15px;font-weight:600;margin-bottom:6px;">No posts yet</div>
@@ -1285,7 +1400,7 @@ function renderFeed() {
     </div>`;
     return;
   }
-  container.innerHTML = state.posts.map(p => renderPostCard(p)).join('');
+  container.innerHTML = combined.map(p => p.isMine ? renderPostCard(p) : renderOtherPostCard(p)).join('');
 }
 
 function renderPostCard(post) {
@@ -1317,6 +1432,51 @@ function renderPostCard(post) {
     <div style="font-size:12px;color:var(--slate);">✦ ${post.extracted.length} portfolio entries extracted</div>` : ''}
     ${clarify}
   </div>`;
+}
+
+function renderOtherPostCard(post) {
+  const candidate = state.candidates.find(c => c.name === post.author);
+  return `<div class="post-card" id="otherpost_${post.id}">
+    <div class="post-header" style="cursor:pointer;" onclick="openUserProfile(${candidate ? candidate.id : 'null'})">
+      <div class="avatar" style="background:var(--teal);">${post.author[0]}</div>
+      <div class="post-meta">
+        <div class="name">${post.author}</div>
+        <div class="time">${post.time}</div>
+      </div>
+    </div>
+    ${post.image ? `<img src="${post.image}" alt="Post image" style="width:100%;max-height:240px;object-fit:cover;border-radius:8px;margin-bottom:12px;">` : ''}
+    <div class="post-text">${post.content}</div>
+    <div class="post-footer" style="gap:16px;border-top:1px solid var(--border);padding-top:12px;">
+      <span style="cursor:pointer;font-size:13px;color:${post.liked ? 'var(--teal)' : 'var(--slate)'};" onclick="toggleLike(${post.id})">${post.liked ? '♥' : '♡'} ${post.likes}</span>
+      <span style="font-size:13px;color:var(--slate);">💬 ${post.comments.length}</span>
+    </div>
+    ${post.comments.length > 0 ? `
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+        ${post.comments.map(c => `<div style="font-size:13px;margin-bottom:4px;"><b>${c.author}</b> <span style="color:var(--text2);">${c.text}</span></div>`).join('')}
+      </div>
+    ` : ''}
+    <div style="display:flex;gap:8px;margin-top:10px;">
+      <input type="text" id="comment_${post.id}" placeholder="Add a comment..." style="flex:1;font-size:13px;padding:8px 12px;">
+      <button class="btn btn-secondary btn-sm" onclick="addComment(${post.id})">Post</button>
+    </div>
+  </div>`;
+}
+
+function toggleLike(id) {
+  const post = state.otherPosts.find(p => p.id === id);
+  if (!post) return;
+  post.liked = !post.liked;
+  post.likes += post.liked ? 1 : -1;
+  renderFeed();
+}
+
+function addComment(id) {
+  const input = document.getElementById('comment_' + id);
+  if (!input || !input.value.trim()) return;
+  const post = state.otherPosts.find(p => p.id === id);
+  if (!post) return;
+  post.comments.push({ author: state.currentUser.name, text: input.value.trim() });
+  renderFeed();
 }
 
 function onPostTyping(el) {
@@ -1400,7 +1560,7 @@ async function submitPost() {
 
 OUTPUT 1 — PORTFOLIO ENTRIES: For each meaningful signal, extract: category (Skill|Knowledge|Personality|Goal-Direction), skill_name (short neutral label), evidence_quote (verbatim excerpt), evidence_strength (mentioned|demonstrated|repeated), trending (true if skill matches any of these trending skills: ${JSON.stringify(trendingSkills)}).
 
-OUTPUT 2 — EMPLOYER QUICK-SCAN: what_they_can_do (1-2 sentences), strongest_proof (1 sentence, traceable to evidence), fit_energy (1 sentence, descriptive not evaluative).
+OUTPUT 2 — EMPLOYER QUICK-SCAN: what_they_can_do, strongest_proof, fit_energy. Each must be a SHORT semicolon-separated list of 2-4 micro-points (3-8 words each), NOT full sentences or paragraphs. Example format: "Builds full-stack apps independently; strong in Python and React; ships under time pressure". Never write flowing prose — always short fragments separated by semicolons.
 
 OUTPUT 3 — CLARIFYING QUESTION: ONE specific question to unlock a better portfolio entry, or null if post is already detailed. The question must reference something specific and help the candidate add detail that unlocks a more accurate entry.
 
@@ -1521,7 +1681,7 @@ function renderPortfolio() {
         <div class="avatar" style="width:52px;height:52px;font-size:20px;background:var(--teal);">${state.currentUser.name[0]}</div>
         <div>
           <h2>${state.currentUser.name}</h2>
-          <div style="color:rgba(255,255,255,0.5);font-size:12px;">${state.onboardData.personalInfo?.field || 'Communication & Media'} · ${state.onboardData.personalInfo?.uni || 'UTAR'}</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:12px;">${state.onboardData.personalInfo?.field || 'Communication & Media'} · ${state.onboardData.personalInfo?.university || 'UTAR'} · GPA ${state.onboardData.personalInfo?.gpa || '3.71'} · ${state.onboardData.personalInfo?.status || 'Fresh Graduate'}</div>
         </div>
       </div>
       <div class="headline">${p.headline}</div>
@@ -1689,18 +1849,27 @@ Return ONLY valid JSON: { "positioning_summary": "...", "pathways": [{"title":".
   }
   hideLoading();
 }
-
 function renderAskWorthyResult(result) {
   const mentorCards = (result.mentors || []).map(m => {
     const mentor = state.mentors.find(me => me.id === m.mentor_id) || state.mentors[0];
     return `<div class="mentor-card">
-      <div class="avatar" style="background:var(--teal);flex-shrink:0;">${mentor.name[0]}</div>
-      <div class="mentor-info">
-        <div class="mentor-name">${mentor.name}</div>
-        <div class="mentor-role">${mentor.role}</div>
-        <div class="mentor-reason">${m.reason}</div>
+      <div class="mentor-card-header" onclick="toggleMentorCard(${mentor.id})">
+        <div class="avatar" style="background:var(--teal);flex-shrink:0;">${mentor.name[0]}</div>
+        <div class="mentor-info">
+          <div class="mentor-name">${mentor.name}</div>
+          <div class="mentor-role">${mentor.role}</div>
+          <div class="mentor-reason">${m.reason}</div>
+        </div>
+        <span style="color:var(--slate);font-size:12px;" id="mentorArrow_${mentor.id}">▼</span>
       </div>
-      <button class="btn btn-ghost btn-sm" onclick="requestConnect('${mentor.name}')">Request</button>
+      <div class="mentor-card-body" id="mentorBody_${mentor.id}">
+        <div style="font-size:12px;color:var(--teal);font-weight:600;margin:14px 0 8px;">${mentor.field} · ${mentor.uni} · GPA ${mentor.gpa} · Class of ${mentor.gradYear}</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px;">${mentor.bio}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
+          ${mentor.tags.map(t => `<span class="badge badge-skill">${t}</span>`).join('')}
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();requestConnect('${mentor.name}')">Request</button>
+      </div>
     </div>`;
   }).join('');
 
@@ -1723,6 +1892,15 @@ function renderAskWorthyResult(result) {
       ${mentorCards}
     </div>
   `;
+}
+
+function toggleMentorCard(id) {
+  const body = document.getElementById('mentorBody_' + id);
+  const arrow = document.getElementById('mentorArrow_' + id);
+  if (body) {
+    body.classList.toggle('open');
+    if (arrow) arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+  }
 }
 
 function requestConnect(name) {
@@ -1797,6 +1975,7 @@ function renderCandidateCards(candidates) {
         <div class="candidate-card-meta">
           <div class="candidate-name">${c.name}</div>
           <div class="candidate-headline">${c.headline}</div>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px;">${c.field} · ${c.uni} · GPA ${c.gpa} · ${c.status}</div>
         </div>
         <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();messageCandidate('${c.name}')">Message</button>
       </div>
@@ -1845,7 +2024,7 @@ function openCandidateProfile(id) {
 
   const skillsHTML = Object.entries(byCategory).map(([cat, skills]) => `
     <div style="margin-bottom:18px;">
-      <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+      <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
         ${catIcons[cat] || '•'} ${cat}
       </div>
       ${skills.map(s => `
@@ -1876,8 +2055,9 @@ function openCandidateProfile(id) {
   `).join('');
 
   // Tabs inside modal
-  document.getElementById('modalContent').innerHTML = `
+ document.getElementById('modalContent').innerHTML = `
     <div style="background:var(--navy);border-radius:10px;padding:20px;color:white;margin-bottom:16px;">
+      <div style="font-size:12px;color:var(--teal);font-weight:600;margin-bottom:8px;">${c.field} · ${c.uni} · GPA ${c.gpa} · Class of ${c.gradYear} · ${c.status}</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:14px;line-height:1.6;">${c.headline}</div>
       <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:var(--teal);font-weight:700;margin-bottom:12px;">Employer Quick-Scan</div>
       <table style="width:100%;border-collapse:collapse;">
@@ -1962,6 +2142,148 @@ function messageCandidate(name) {
   navigateTo('messages');
 }
 
+// ═══════════════════════════════════════════
+// USER SEARCH (candidate-facing)
+// ═══════════════════════════════════════════
+function renderUserSearch() {
+  renderUserResults(state.candidates.filter(c => c.name !== state.currentUser.name));
+}
+
+function filterUsers() {
+  const query = document.getElementById('userSearch').value.toLowerCase();
+  const pool = state.candidates.filter(c => c.name !== state.currentUser.name);
+  const filtered = query ? pool.filter(c =>
+    c.name.toLowerCase().includes(query) ||
+    c.field.toLowerCase().includes(query) ||
+    c.skills.some(s => s.name.toLowerCase().includes(query))
+  ) : pool;
+  renderUserResults(filtered);
+}
+
+function renderUserResults(users) {
+  const container = document.getElementById('userSearchResults');
+  if (!container) return;
+  if (users.length === 0) {
+    container.innerHTML = `<div class="card" style="text-align:center;padding:32px;color:var(--slate);">No one matches your search.</div>`;
+    return;
+  }
+  container.innerHTML = users.map(c => `
+    <div class="candidate-card" onclick="openUserProfile(${c.id})">
+      <div class="candidate-card-header">
+        <div class="avatar" style="background:var(--teal);width:48px;height:48px;font-size:18px;">${c.name[0]}</div>
+        <div class="candidate-card-meta">
+          <div class="candidate-name">${c.name}</div>
+          <div class="candidate-headline">${c.headline}</div>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px;">${c.field} · ${c.uni} · GPA ${c.gpa} · ${c.status}</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();messageCandidate('${c.name}')">Message</button>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        ${c.skills.map(s => `<span class="badge badge-${s.strength}">${s.name}</span>`).join('')}
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--slate);">Tap to view profile →</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════
+// PROFILE PAGE
+// ═══════════════════════════════════════════
+function openUserProfile(id) {
+  navigateTo('profile');
+  renderUserProfile(id);
+}
+
+function renderUserProfile(id) {
+  const isOwnProfile = id === null || id === undefined;
+  const candidate = isOwnProfile ? null : state.candidates.find(c => c.id === id);
+  const name = isOwnProfile ? state.currentUser.name : candidate.name;
+  const field = isOwnProfile ? (state.onboardData.personalInfo?.field || 'Communication & Media') : candidate.field;
+  const uni = isOwnProfile ? (state.onboardData.personalInfo?.university || 'UTAR') : candidate.uni;
+  const gpa = isOwnProfile ? (state.onboardData.personalInfo?.gpa || '3.71') : candidate.gpa;
+  const status = isOwnProfile ? (state.onboardData.personalInfo?.status || 'Fresh Graduate') : candidate.status;
+  const bio = isOwnProfile ? (state.onboardData.interestsValues?.interests || 'Building my portfolio on Worthy.') : candidate.headline;
+  const quickScan = isOwnProfile ? state.portfolio.quickScan : candidate.quickScan;
+  const skills = isOwnProfile ? state.portfolio.skills : candidate.skills;
+  const ownPosts = isOwnProfile ? state.posts : [];
+  const isFollowing = state.following.includes(name);
+  const followerCount = state.followerCounts[name] || 0;
+
+  const postsGridHTML = isOwnProfile
+    ? (ownPosts.length === 0
+        ? `<div class="card" style="text-align:center;padding:32px;color:var(--slate);grid-column:1/-1;">No posts yet. Head to Feed to start posting.</div>`
+        : ownPosts.map(p => `
+          <div class="grid-post" onclick="navigateTo('feed')">
+            ${p.image ? `<img src="${p.image}" alt="post">` : `<div class="grid-post-text">${p.content.substring(0, 90)}...</div>`}
+          </div>
+        `).join(''))
+    : `<div class="card" style="text-align:center;padding:32px;color:var(--slate);grid-column:1/-1;">Posts are visible once you connect.</div>`;
+
+  const skillBadgesHTML = (skills || []).slice(0, 8).map(s => `
+    <span class="badge badge-${s.strength}">${s.name || s}</span>
+  `).join('');
+
+  document.getElementById('screen-profile').innerHTML = `
+    <div class="profile-header">
+      <div class="profile-avatar">${name[0]}</div>
+      <div class="profile-meta">
+        <div class="profile-name-row">
+          <h2>${name}</h2>
+          ${!isOwnProfile ? `
+            <button class="btn ${isFollowing ? 'btn-following' : 'btn-follow'} btn-sm" onclick="toggleFollow('${name}')">${isFollowing ? '✓ Following' : '+ Follow'}</button>
+            <button class="btn btn-ghost btn-sm" onclick="messageCandidate('${name}')">Message</button>
+          ` : ''}
+        </div>
+        <div class="profile-stats">
+          <div class="profile-stat"><b>${ownPosts.length || (candidate ? 2 : 0)}</b> posts</div>
+          <div class="profile-stat"><b>${followerCount}</b> followers</div>
+          <div class="profile-stat"><b>${state.following.length}</b> following</div>
+        </div>
+        <div class="profile-edu">${field} · ${uni} · GPA ${gpa} · ${status}</div>
+        <div class="profile-bio">${bio}</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+      <div class="section-title">⚡ Live Portfolio Summary</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;">
+        <div>
+          <div class="qs-mini-label">What they can do</div>
+          <div class="qs-mini-val">${quickScan?.what_they_can_do || '—'}</div>
+        </div>
+        <div>
+          <div class="qs-mini-label">Strongest proof</div>
+          <div class="qs-mini-val">${quickScan?.strongest_proof || '—'}</div>
+        </div>
+        <div>
+          <div class="qs-mini-label">Fit energy</div>
+          <div class="qs-mini-val">${quickScan?.fit_energy || '—'}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border);">
+        ${skillBadgesHTML}
+      </div>
+      ${isOwnProfile ? `<div style="margin-top:14px;"><button class="btn btn-ghost btn-sm" onclick="navigateTo('portfolio')">View Full Portfolio →</button></div>` : ''}
+    </div>
+
+    <div class="card">
+      <div class="section-title">📷 Posts</div>
+      <div class="posts-grid">${postsGridHTML}</div>
+    </div>
+  `;
+}
+
+function toggleFollow(name) {
+  if (state.following.includes(name)) {
+    state.following = state.following.filter(n => n !== name);
+    state.followerCounts[name] = Math.max(0, (state.followerCounts[name] || 1) - 1);
+  } else {
+    state.following.push(name);
+    state.followerCounts[name] = (state.followerCounts[name] || 0) + 1;
+  }
+  const candidate = state.candidates.find(c => c.name === name);
+  renderUserProfile(candidate ? candidate.id : null);
+}
 // ═══════════════════════════════════════════
 // MESSAGES
 // ═══════════════════════════════════════════
